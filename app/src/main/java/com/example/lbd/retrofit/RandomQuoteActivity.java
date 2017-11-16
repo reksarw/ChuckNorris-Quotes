@@ -16,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class RandomQuoteActivity extends AppCompatActivity {
 
     ChuckService chuckService;
     TextView textResult;
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         imageResult = findViewById(R.id.imageResult);
         btnReload = findViewById(R.id.reload);
 
+        /** Set Image Programmatically */
         android.view.ViewGroup.LayoutParams layoutParams = imageResult.getLayoutParams();
         layoutParams.width = 180;
         layoutParams.height = 180;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         btnReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setButton("loading...", false);
                 onResume();
             }
         });
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<ChuckNorrisQuotes>() {
             @Override
             public void onResponse(Call<ChuckNorrisQuotes> call, Response<ChuckNorrisQuotes> response) {
+                setButton("" + getResources().getString(R.string.reload), true);
                 textResult.setText(response.body().getValue());
                 Picasso.with(getApplicationContext())
                         .load(response.body().getIconUrl())
@@ -80,5 +83,11 @@ public class MainActivity extends AppCompatActivity {
                 textResult.setText(t.getMessage());
             }
         });
+    }
+
+    private void setButton(String message , Boolean isEnabled)
+    {
+        btnReload.setText(message);
+        btnReload.setEnabled(isEnabled);
     }
 }

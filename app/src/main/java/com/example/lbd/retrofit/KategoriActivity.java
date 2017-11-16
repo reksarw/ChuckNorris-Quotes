@@ -1,18 +1,14 @@
 package com.example.lbd.retrofit;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import android.widget.Toast;
 
 public class KategoriActivity extends AppCompatActivity {
 
@@ -29,7 +25,7 @@ public class KategoriActivity extends AppCompatActivity {
         btnClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RandomQuoteActivity.class);
 
                 getApplicationContext().startActivity(intent);
             }
@@ -37,11 +33,17 @@ public class KategoriActivity extends AppCompatActivity {
 
         listKategori = findViewById(R.id.listKategori);
 
-        // this-The current activity context.
-        // Second param is the resource Id for list layout row item
-        // Third param is input array
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.list_categories));
         listKategori.setAdapter(arrayAdapter);
 
+        listKategori.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent = new Intent(KategoriActivity.this, CategoryQuoteActivity.class);
+                intent.putExtra("kategori", getResources().getStringArray(R.array.list_categories)[position]);
+
+                getApplicationContext().startActivity(intent);
+            }
+        });
     }
 }
