@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Retrofit</string>
+
+    <string-array name="list_categories">
+        <item>Explicit</item>
+        <item>Dev</item>
+        <item>Movie</item>
+        <item>Food</item>
+        <item>Celebrity</item>
+        <item>Science</item>
+        <item>Political</item>
+        <item>Sport</item>
+        <item>Religion</item>
+        <item>Animal</item>
+        <item>Music</item>
+        <item>History</item>
+        <item>Travel</item>
+        <item>Career</item>
+        <item>Money</item>
+        <item>Fashion</item>
+    </string-array>
+</resources>
