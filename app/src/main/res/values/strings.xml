@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Retrofit</string>
+    <string name="app_name">Chuck Norris Quotes</string>
     <string name="random">Acak Quote</string>
     <string name="reload">Perbarui Quote</string>
 
