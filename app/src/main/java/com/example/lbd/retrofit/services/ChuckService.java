@@ -3,6 +3,8 @@ package com.example.lbd.retrofit.services;
 import com.example.lbd.retrofit.models.ChuckNorrisCategoryQuote;
 import com.example.lbd.retrofit.models.ChuckNorrisQuotes;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -21,4 +23,7 @@ public interface ChuckService {
     Call<ChuckNorrisCategoryQuote> getCategoryQuote(
         @Query("category") String kategori
     );
+
+    @GET("jokes/categories")
+    Call<List<String>> getCategories();
 }
